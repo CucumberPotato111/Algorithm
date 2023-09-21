@@ -1,0 +1,99 @@
+public static void BubbleSort(int[] arr)
+{
+    int n = arr.Length;
+    bool swapped;
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        swapped = false;
+
+        for (int j = n - 1; j > i; j--)
+        {
+            if (arr[j] < arr[j - 1])
+            {
+                int temp = arr[j];
+                arr[j] = arr[j - 1];
+                arr[j - 1] = temp;
+                swapped = true;
+            }
+        }
+
+        if (!swapped)
+        {
+            // If no swapping occurred in the inner loop, the array is already sorted
+            break;
+        }
+    }
+}
+
+public static void SelectionSort(int[] arr)
+    {
+        int n = arr.Length;
+
+        for (int i = 0; i < n - 1; i++)
+        {
+            int minIndex = i;
+
+            for (int j = i + 1; j < n; j++)
+            {
+                if (arr[j] < arr[minIndex])
+                    minIndex = j;
+            }
+
+            // Swapping the minimum element with the first element of the unsorted portion
+            int temp = arr[minIndex];
+            arr[minIndex] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+public static void InsertionSort(int[] arr)
+{
+    for (int i = 1; i < arr.Length; i++)
+    {
+        int key = arr[i];
+        int j = i - 1;
+
+        while (j >= 0 && arr[j] > key)
+        {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+
+        arr[j + 1] = key;
+    }
+}
+public static void QuickSort(int[] arr, int l, int r)
+{
+    int p = arr[(l + r) / 2];
+    int i = l, j = r;
+
+    while (i < j)
+    {
+        while (arr[i] < p)
+        {
+            i++;
+        }
+        while (arr[j] > p)
+        {
+            j--;
+        }
+        if (i <= j)
+        {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+            j--;
+        }
+    }
+
+    if (i < r)
+    {
+        QuickSort(arr, i, r);
+    }
+    if (l < j)
+    {
+        QuickSort(arr, l, j);
+    }
+}
