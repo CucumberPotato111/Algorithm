@@ -1,0 +1,162 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BaiTap2
+{
+    public class IntArray
+    {
+        private int[] arr;
+        public int[] Arr { get => arr; set => arr = value; }
+        public IntArray() {
+            this.arr = new int[0];
+        }
+        public IntArray(int k) {
+
+            while (!CheckSize(k))
+            {
+                Console.WriteLine("Kich thuoc phai duong va khong qua 1000000 phan tu\nXin nhap lai: ");
+                k = Int32.Parse(Console.ReadLine());
+            }
+            this.arr = new int[k];
+            Random random = new Random();
+            for(int i = 0; i < k; i++)
+            {
+                arr[i] = random.Next(1,200);
+            }
+        }
+        public IntArray(int[] a)
+        {
+            this.arr = a;
+        }
+        public IntArray(IntArray obj)
+        {
+            int n = obj.arr.Length;
+            arr = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                arr[i] = obj.arr[i];
+            }
+        }
+        public void Input()
+        {
+            Console.WriteLine("Nhap so luong trong mang: ");
+            int k = Int32.Parse(Console.ReadLine());            
+            while (!CheckSize(k)){
+                Console.WriteLine("Kich thuoc phai duong va khong qua 1000000 phan tu\nXin nhap lai: ");
+                k = Int32.Parse(Console.ReadLine());
+            }
+            arr = new int[k];
+            for(int i = 0;i < k; i++)
+            {
+                Console.WriteLine(">> Nhap phan tu {0}: ", i + 1);
+                arr[i]= Int32.Parse(Console.ReadLine());
+            }
+        }
+        public void Output()
+        {
+            for(int i = 0;i<arr.Length ; i++)
+            {
+                Console.Write("phan tu {0}:   co gia tri: {1}\n", i, arr[i]);
+            }
+        }
+        public bool CheckSize(int n)
+        {
+            if(n<0 && n > 1000000)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public int LinearSearch(int x)
+        {
+            int n = arr.Length;
+            int comparisonCount = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                comparisonCount++;
+                Console.WriteLine($"Comparing element at index {i} with {x}");
+
+                if (arr[i] == x)
+                {
+                    Console.WriteLine($"Element found at index {i}");
+                    Console.WriteLine($"Total comparison steps: {comparisonCount}");
+                    return i;
+                }
+            }
+
+            Console.WriteLine("Element not found");
+            Console.WriteLine($"Total comparison steps: {comparisonCount}");
+            return -1;
+        }
+        public int BinarySearch(int x)
+        {
+            Sort();
+            int left = 0;
+            int right = arr.Length - 1;
+            int comparisonCount = 0;
+
+            Console.WriteLine("Array: ");
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write(arr[i] + ",");
+            }
+            Console.WriteLine("Target: " + x);
+            Console.WriteLine();
+
+            while (left <= right)
+            {
+                int mid = (left + right) / 2;
+                Console.WriteLine("Left: {0}  Right: {1}  Mid: {2}", left, right, mid);
+                Console.WriteLine("Split Array: [{0}]  [{1}]", string.Join(", ", arr[left..(mid)]), string.Join(", ", arr[(mid + 1)..right]));
+                Console.WriteLine("Comparison: Comparing element at index {0} with {1}", mid, x);
+
+                comparisonCount++;
+
+                if (arr[mid] == x)
+                {
+                    Console.WriteLine("Element found at index {0}", mid);
+                    Console.WriteLine("Total comparison steps: {0}", comparisonCount);
+                    return mid;
+                }
+                else if (arr[mid] > x)
+                {
+                    right = mid - 1;
+                }
+                else
+                {
+                    left = mid + 1;
+                }
+            }
+
+            Console.WriteLine("Element not found");
+            Console.WriteLine("Total comparison steps: {0}", comparisonCount);
+            return -1;
+
+        }
+        public void Sort()
+        {
+            for(int i = 0; i < arr.Length;i++)
+            {
+                for(int j = i+1; j < arr.Length;j++)
+                {
+                    if(arr[j] < arr[i])
+                    {
+                        int temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+        }
+
+
+    }
+}
