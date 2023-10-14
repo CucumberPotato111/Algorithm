@@ -1,0 +1,8 @@
+B:\Codes\C#\Lab\THCTDLGT_NguyenMinhDuc\DSLKDon\bin\Debug\DSLKDon.exe.config
+B:\Codes\C#\Lab\THCTDLGT_NguyenMinhDuc\DSLKDon\bin\Debug\DSLKDon.exe
+B:\Codes\C#\Lab\THCTDLGT_NguyenMinhDuc\DSLKDon\bin\Debug\DSLKDon.pdb
+B:\Codes\C#\Lab\THCTDLGT_NguyenMinhDuc\DSLKDon\obj\Debug\DSLKDon.csproj.AssemblyReference.cache
+B:\Codes\C#\Lab\THCTDLGT_NguyenMinhDuc\DSLKDon\obj\Debug\DSLKDon.csproj.SuggestedBindingRedirects.cache
+B:\Codes\C#\Lab\THCTDLGT_NguyenMinhDuc\DSLKDon\obj\Debug\DSLKDon.csproj.CoreCompileInputs.cache
+B:\Codes\C#\Lab\THCTDLGT_NguyenMinhDuc\DSLKDon\obj\Debug\DSLKDon.exe
+B:\Codes\C#\Lab\THCTDLGT_NguyenMinhDuc\DSLKDon\obj\Debug\DSLKDon.pdb
